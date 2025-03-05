@@ -6672,15 +6672,15 @@ local station_names = {
 }
 
 local magic_names = {
-    [1230855] = "Golden Goliath",
-    [1230856] = "Levitate",
-    [1230857] = "Power",
-    [1230858] = "Oxygenate",
-    [1230859] = "Enlarge",
-    [1230860] = "EMP",
-    [1230861] = "Life Force",
-    [1230862] = "Rain Dance",
-    [1230863] = "Heal",
+    [1230855] = {name = "Golden Goliath", world = "Mayahem Temple"},
+    [1230856] = {name = "Levitate", world = "Glitter Gulch Mine"},
+    [1230857] = {name = "Power", world = "Witchyworld"},
+    [1230858] = {name = "Oxygenate", world = "Jolly Roger's Lagoon"},
+    [1230859] = {name = "Enlarge", world = "Terrydactyland"},
+    [1230860] = {name = "EMP", world = "Grunty Industries"},
+    [1230861] = {name = "Life Force", world = "Hailfire Peaks"},
+    [1230862] = {name = "Rain Dance", world = "Cloud Cuckooland"},
+    [1230863] = {name = "Heal", world = "Isle O' Hags"},
 }
 
 local transformation_names = {
@@ -6818,13 +6818,13 @@ function get_item_message_text(item_id, item, player)
         then
             -- Mumbo flavor text
             return own
-                and string.format("Mumbo now use mighty %s spell. Bear go visit Mumbo to try.", magic_names[item_id])
-                or string.format("%s told Mumbo mighty %s spell. Bear go visit Mumbo to try.", player, magic_names[item_id])
+                and string.format("Mumbo now use mighty %s spell. Bear go visit Mumbo in %s to try.", magic_names[item_id]["name"], magic_names[item_id]["world"])
+                or string.format("%s told Mumbo mighty %s spell. Bear go visit Mumbo in %s to try.", player, magic_names[item_id]["name"], magic_names[item_id]["world"])
         else
             -- Basic text
             return own
-                and string.format("Mumbo can now use the %s spell.", magic_names[item_id])
-                or string.format("%s has just unlocked Mumbo's %s spell.", player, magic_names[item_id])
+                and string.format("Mumbo can now use the %s spell in %s.", magic_names[item_id]["name"], magic_names[item_id]["world"])
+                or string.format("%s has just unlocked Mumbo's %s spell in %s.", player, magic_names[item_id]["name"], magic_names[item_id]["world"])
         end
     elseif 1230174 <= item_id and item_id <= 1230182 -- Humba Transformations
     then
