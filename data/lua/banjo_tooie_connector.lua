@@ -6695,6 +6695,13 @@ local transformation_names = {
     [1230182] = {name = "Dragon", attribute = "dangerous"},
 }
 
+    [1230831] = { -- Progressive Water Training
+        {check = "AP_ITEM_DIVE", id = 1230810, name = "Dive"},
+        {check = "AP_ITEM_DAIR", id = 1230778, name = "Double Air"},
+        {check = "AP_ITEM_FSWIM", id = 1230777, name = "Fast Swimming"}
+    },
+    [1230832] = { -- Progressive Bash Attack
+        {check = "AP_ITEM_GRAT", id = 1230824, name = "Ground Rat-a-tat Rap"},
 function display_item_message(msg_table)
     -- Cancel if not for this player
     if msg_table["to_player"] ~= PLAYER
@@ -6718,152 +6725,17 @@ end
 
 function convert_progressive_move_message(msg_table)
     local item_id = msg_table["item_id"]
-    if item_id == 1230828 -- Progressive Beak Buster
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_BDRILL"]) == 1
-        then
-            msg_table["item_id"] = 1230757
-            msg_table["item"] = "Bill Drill"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_BBUST"]) == 1
-        then
-            msg_table["item_id"] = 1230820
-            msg_table["item"] = "Beak Buster"
-        end
-    elseif item_id == 1230829 -- Progressive Eggs
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_CEGGS"]) == 1
-        then
-            msg_table["item_id"] = 1230767
-            msg_table["item"] = "Clockwork Eggs"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_IEGGS"]) == 1
-        then
-            msg_table["item_id"] = 1230763
-            msg_table["item"] = "Ice Eggs"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_GEGGS"]) == 1
-        then
-            msg_table["item_id"] = 1230759
-            msg_table["item"] = "Grenade Eggs"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_FEGGS"]) == 1
-        then
-            msg_table["item_id"] = 1230756
-            msg_table["item"] = "Fire Eggs"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_BEGGS"]) == 1
-        then
-            msg_table["item_id"] = 1230823
-            msg_table["item"] = "Blue Eggs"
-        end
-    elseif item_id == 1230830 -- Progressive Shoes
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_CLAWBTS"]) == 1
-        then
-            msg_table["item_id"] = 1230773
-            msg_table["item"] = "Claw Clamber Boots"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_SPRINGB"]) == 1
-        then
-            msg_table["item_id"] = 1230768
-            msg_table["item"] = "Springy Step Shoes"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_TTRAIN"]) == 1
-        then
-            msg_table["item_id"] = 1230821
-            msg_table["item"] = "Turbo Trainers"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_SSTRIDE"]) == 1
-        then
-            msg_table["item_id"] = 1230826
-            msg_table["item"] = "Stilt Stride"
-        end
-    elseif item_id == 1230831 -- Progressive Water Training
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_FSWIM"]) == 1
-        then
-            msg_table["item_id"] = 1230777
-            msg_table["item"] = "Fast Swimming"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_DAIR"]) == 1
-        then
-            msg_table["item_id"] = 1230778
-            msg_table["item"] = "Double Air"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_DIVE"]) == 1
-        then
-            msg_table["item_id"] = 1230810
-            msg_table["item"] = "Dive"
-        end
-    elseif item_id == 1230832 -- Progressive Bash Attack
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_BBASH"]) == 1
-        then
-            msg_table["item_id"] = 1230800
-            msg_table["item"] = "Breegull Bash"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_GRAT"]) == 1
-        then
-            msg_table["item_id"] = 1230824
-            msg_table["item"] = "Ground Rat-a-tat Rap"
-        end
-    elseif item_id == 1230782 -- Progressive Flight
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_AIREAIM"]) == 1
-        then
-            msg_table["item_id"] = 1230760
-            msg_table["item"] = "Airborne Egg Aiming"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_BBOMB"]) == 1
-        then
-            msg_table["item_id"] = 1230827
-            msg_table["item"] = "Beak Bomb"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_FPAD"]) == 1
-        then
-            msg_table["item_id"] = 1230811
-            msg_table["item"] = "Flight Pad"
-        end
-    elseif item_id == 1230783 -- Progressive Egg Aim
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_EGGAIM"]) == 1
-        then
-            msg_table["item_id"] = 1230755
-            msg_table["item"] = "Egg Aim"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_EGGSHOOT"]) == 1
-        then
-            msg_table["item_id"] = 1230813
-            msg_table["item"] = "Third Person Egg Shooting"
-        end
-    elseif item_id == 1230784 -- Progressive Adv Water Training
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_FSWIM"]) == 1
-        then
-            msg_table["item_id"] = 1230777
-            msg_table["item"] = "Fast Swimming"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_DAIR"]) == 1
-        then
-            msg_table["item_id"] = 1230778
-            msg_table["item"] = "Double Air"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_TTORP"]) == 1
-        then
-            msg_table["item_id"] = 1230765
-            msg_table["item"] = "Talon Torpedo"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_AUQAIM"]) == 1
-        then
-            msg_table["item_id"] = 1230766
-            msg_table["item"] = "Sub-Aqua Egg Aiming"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_DIVE"]) == 1
-        then
-            msg_table["item_id"] = 1230810
-            msg_table["item"] = "Dive"
-        end
-    elseif item_id == 1230785 -- Progressive Adv Egg Aim
-    then
-        if BTH:getItem(ITEM_TABLE["AP_ITEM_BBLASTER"]) == 1
-        then
-            msg_table["item_id"] = 1230754
-            msg_table["item"] = "Breegull Blaster"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_EGGAIM"]) == 1
-        then
-            msg_table["item_id"] = 1230755
-            msg_table["item"] = "Egg Aim"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_AMAZEOGAZE"]) == 1
-        then
-            msg_table["item_id"] = 1230779
-            msg_table["item"] = "Amaze-O-Gaze"
-        elseif BTH:getItem(ITEM_TABLE["AP_ITEM_EGGSHOOT"]) == 1
-        then
-            msg_table["item_id"] = 1230813
-            msg_table["item"] = "Third Person Egg Shooting"
+    
+    -- Check if item id exists in mapping table
+    if progressive_move_mappings[item_id] then
+        -- Iterate items backwards so that the current unlock is checked first
+        for i = #progressive_move_mappings[item_id], 1, -1 do
+            local item = progressive_move_mappings[item_id][i]
+            if BTH:getItem(ITEM_TABLE[item.check]) == 1 then
+                msg_table["item_id"] = item.id
+                msg_table["item"] = item.name
+                return
+            end
         end
     end
 end
