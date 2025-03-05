@@ -6695,6 +6695,24 @@ local transformation_names = {
     [1230182] = {name = "Dragon", attribute = "dangerous"},
 }
 
+local progressive_move_mappings = {
+    [1230828] = { -- Progressive Beak Buster
+        {check = "AP_ITEM_BBUST", id = 1230820, name = "Beak Buster"},
+        {check = "AP_ITEM_BDRILL", id = 1230757, name = "Bill Drill"}
+    },
+    [1230829] = { -- Progressive Eggs
+        {check = "AP_ITEM_BEGGS", id = 1230823, name = "Blue Eggs"},
+        {check = "AP_ITEM_FEGGS", id = 1230756, name = "Fire Eggs"},
+        {check = "AP_ITEM_GEGGS", id = 1230759, name = "Grenade Eggs"},
+        {check = "AP_ITEM_IEGGS", id = 1230763, name = "Ice Eggs"},
+        {check = "AP_ITEM_CEGGS", id = 1230767, name = "Clockwork Eggs"}
+    },
+    [1230830] = { -- Progressive Shoes
+        {check = "AP_ITEM_SSTRIDE", id = 1230826, name = "Stilt Stride"},
+        {check = "AP_ITEM_TTRAIN", id = 1230821, name = "Turbo Trainers"},
+        {check = "AP_ITEM_SPRINGB", id = 1230768, name = "Springy Step Shoes"},
+        {check = "AP_ITEM_CLAWBTS", id = 1230773, name = "Claw Clamber Boots"}
+    },
     [1230831] = { -- Progressive Water Training
         {check = "AP_ITEM_DIVE", id = 1230810, name = "Dive"},
         {check = "AP_ITEM_DAIR", id = 1230778, name = "Double Air"},
@@ -6702,6 +6720,32 @@ local transformation_names = {
     },
     [1230832] = { -- Progressive Bash Attack
         {check = "AP_ITEM_GRAT", id = 1230824, name = "Ground Rat-a-tat Rap"},
+        {check = "AP_ITEM_BBASH", id = 1230800, name = "Breegull Bash"}
+    },
+    [1230782] = { -- Progressive Flight
+        {check = "AP_ITEM_FPAD", id = 1230811, name = "Flight Pad"},
+        {check = "AP_ITEM_BBOMB", id = 1230827, name = "Beak Bomb"},
+        {check = "AP_ITEM_AIREAIM", id = 1230760, name = "Airborne Egg Aiming"}
+    },
+    [1230783] = { -- Progressive Egg Aim
+        {check = "AP_ITEM_EGGSHOOT", id = 1230813, name = "Third Person Egg Shooting"},
+        {check = "AP_ITEM_EGGAIM", id = 1230755, name = "Egg Aim"}
+    },
+    [1230784] = { -- Progressive Adv Water Training
+        {check = "AP_ITEM_DIVE", id = 1230810, name = "Dive"},
+        {check = "AP_ITEM_AUQAIM", id = 1230766, name = "Sub-Aqua Egg Aiming"},
+        {check = "AP_ITEM_TTORP", id = 1230765, name = "Talon Torpedo"},
+        {check = "AP_ITEM_DAIR", id = 1230778, name = "Double Air"},
+        {check = "AP_ITEM_FSWIM", id = 1230777, name = "Fast Swimming"}
+    },
+    [1230785] = { -- Progressive Adv Egg Aim
+        {check = "AP_ITEM_EGGSHOOT", id = 1230813, name = "Third Person Egg Shooting"},
+        {check = "AP_ITEM_AMAZEOGAZE", id = 1230779, name = "Amaze-O-Gaze"},
+        {check = "AP_ITEM_EGGAIM", id = 1230755, name = "Egg Aim"},
+        {check = "AP_ITEM_BBLASTER", id = 1230754, name = "Breegull Blaster"}
+    }
+}
+
 function display_item_message(msg_table)
     -- Cancel if not for this player
     if msg_table["to_player"] ~= PLAYER
