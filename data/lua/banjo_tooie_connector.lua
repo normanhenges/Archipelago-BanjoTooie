@@ -6791,11 +6791,24 @@ function get_item_message_text(item_id, item, player)
         or (1230810 <= item_id and item_id <= 1230827) -- BK Moves
         or (1230782 <= item_id and item_id <= 1230785) -- Progessive Moves 1
         or (1230828 <= item_id and item_id <= 1230832) -- Progressive Moves 2
-        or (item_id == 1230800 or item_id == 1230802) -- Stop'n'Swap Moves
     then
         return own
             and string.format("You can now use %s.", item)
             or string.format("%s taught you how to use %s.", player, item)
+    elseif (item_id == 1230800 or item_id == 1230802) -- Stop'n'Swap Moves
+    then
+        if DIALOG_CHARACTER == 110 or DIALOG_CHARACTER == 109
+        then
+            -- Heggy flavor text
+            return own
+                and string.format("Cluck! Can now use %s. Cluck!", item)
+                or string.format("Cluck! Got %s from %s. Cluck!", item, player)
+        else
+            -- Basic text
+            return own
+                and string.format("You can now use %s.", item)
+                or string.format("%s taught you how to use %s.", player, item)
+        end
     elseif 1230944 <= item_id and item_id <= 1230952 -- Worlds
     then
         return own
