@@ -6695,6 +6695,15 @@ local transformation_names = {
     [1230182] = {name = "Dragon", attribute = "dangerous"},
 }
 
+local random_item_comment = {
+    [0] = {message = "I don't remember this item being here, Kazooie. Did somebody hack the game?", character = 5}, -- Banjo
+    [1] = {message = "I told you this item was hidden here, Banjo. This randomizer is easy.", character = 6}, -- Kazooie
+    [2] = {message = "Your chance of victory is small,\nthis item doesn't help at all!", character = 15}, -- Grunty
+    [3] = {message = "Oh I've seen this item before! I think it was inside... oh nevermind...", character = 27}, -- Canary Mary
+    [4] = {message = "Oh what a great item! But have you been to the lava world yet?", character = 29}, -- Gobi
+    [5] = {message = "Is this item edible?", character = 41} -- Boggy
+}
+
 local progressive_move_mappings = {
     [1230828] = { -- Progressive Beak Buster
         {check = "AP_ITEM_BBUST", id = 1230820, name = "Beak Buster"},
@@ -6765,6 +6774,13 @@ function display_item_message(msg_table)
     if not msg_icon then return end
 
     table.insert(MESSAGE_TABLE, {msg_text, msg_icon});
+
+    -- 1 % chance of adding a random comment by a game character
+    if math.random(100) == 100
+    then
+        local comment = random_item_comment[math.random(#random_item_comment)]
+        table.insert(MESSAGE_TABLE, {comment["message"], comment["character"]});
+    end
 end
 
 function convert_progressive_move_message(msg_table)
@@ -6775,9 +6791,9 @@ function convert_progressive_move_message(msg_table)
         -- Iterate items backwards so that the current unlock is checked first
         for i = #progressive_move_mappings[item_id], 1, -1 do
             local item = progressive_move_mappings[item_id][i]
-            if BTH:getItem(ITEM_TABLE[item.check]) == 1 then
-                msg_table["item_id"] = item.id
-                msg_table["item"] = item.name
+            if BTH:getItem(ITEM_TABLE[item["check"]]) == 1 then
+                msg_table["item_id"] = item["id"]
+                msg_table["item"] = item["name"]
                 return
             end
         end
